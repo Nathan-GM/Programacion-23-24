@@ -1,0 +1,6 @@
+esto es un documento
+de prueba
+en el que se hace
+uso de
+cola y
+de pila
