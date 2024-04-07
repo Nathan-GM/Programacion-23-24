@@ -4,8 +4,9 @@
  */
 package ejercicio.pkg01;
 
-import java.util.Scanner;
+import java.util.InputMismatchException;
 import java.util.Locale;
+import java.util.Scanner;
 
 /**
  *
@@ -52,10 +53,12 @@ public class Ejercicio01 {
             } catch (NumeroFueraDeRango nfdr) {
                 System.out.println(nfdr.toString());
                 correcto = true;
-            } /*catch (NoEntero nee) {
-                System.out.println(nee.toString());
-                correcto = false;
-            }*/
+            }
+            catch (InputMismatchException algo) {
+                System.out.println("El valor introducido no es un número, introduce de nuevo.");
+                teclado.next();
+                correcto = true;
+            }
             System.out.println("");
         } while (correcto != false);
 
