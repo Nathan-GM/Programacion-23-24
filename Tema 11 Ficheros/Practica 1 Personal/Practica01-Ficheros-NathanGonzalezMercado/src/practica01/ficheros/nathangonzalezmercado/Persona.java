@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package practica01.ficheros.nathangonzalezmercado;
-
-import java.io.File;
 import java.util.Objects;
 
 /**
@@ -19,7 +17,6 @@ public class Persona {
     private String genero;
     private String nacimiento;
     private String pais;
-    File fichero = new File("personal.csv");
 
     public Persona(String nombre, String apellido, String email, String genero, String nacimiento, String pais) {
         this.nombre = nombre;
@@ -123,14 +120,6 @@ public class Persona {
 
     public void setPais(String pais) {
         this.pais = pais;
-    }
-
-    public File getFichero() {
-        return fichero;
-    }
-
-    public void setFichero(File fichero) {
-        this.fichero = fichero;
     }
 
     @Override
