@@ -1,0 +1,3 @@
+Aran,Delgado,adelgado@gmail.com,Masculino,3_marzo_2001,Espa�a,
+Cristina,Juan,cjuan@gmail.com,Femenino,2_diciembre_2001,China,
+Marta,Gonzalez,mgonzalez@gmail.com,12,12_enero_2005,Islandia,

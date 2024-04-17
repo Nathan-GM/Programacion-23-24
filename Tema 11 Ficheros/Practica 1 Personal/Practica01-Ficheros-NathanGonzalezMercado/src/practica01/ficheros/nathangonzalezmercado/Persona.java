@@ -32,6 +32,8 @@ public class Persona {
     
     
     //metodo equals generado automatico, revisar con Bueno.
+
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -61,6 +63,7 @@ public class Persona {
         }
         return Objects.equals(this.pais, other.pais);
     }
+
     
   
     

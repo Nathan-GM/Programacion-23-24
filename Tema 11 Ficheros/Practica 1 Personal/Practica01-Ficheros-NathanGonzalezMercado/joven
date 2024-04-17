@@ -1,0 +1,60 @@
+        /*
+        //variables minimas
+        int dia = 0;
+        int mes = 0;
+        int anyo = 0;
+        //variables a guardar de persona actual
+        int dc = 0;
+        String mdS = "";
+        int md = 0;
+        int ad = 0;
+        Persona joven = new Persona("", "", "", "", "", "");
+        for (Iterator reco = this.personas.iterator(); reco.hasNext();) {
+            //registramos en un array nacimiento el spli del nacimiento de la persona actual
+            String[] nacimiento;
+            Persona recorrido = (Persona) reco.next();
+            nacimiento = recorrido.getNacimiento().split("_");
+            //Lo almacenamos en las variables creadas anteriormente
+            dc = Integer.parseInt(nacimiento[0]);
+            mdS = nacimiento[1];
+            md = convertorMes(mdS);
+            ad = Integer.parseInt(nacimiento[2]);
+            //lo comparamos
+
+            if (anyo < ad) {
+                anyo = ad;
+                mes = 0;
+                dia = 0;
+                if (mes < md) {
+                    mes = md;
+                    if (dia < dc) {
+                        dia = dc;
+                        joven = recorrido;
+                    }
+                } else if (mes == md) {
+                    if (dia < dc) {
+                        dia = dc;
+                        joven = recorrido;
+                    }
+                }
+            } else if (anyo == ad) {
+                if (mes > md) {
+                    mes = md;
+                    if (dia < dc) {
+                        dia = dc;
+                        joven = recorrido;
+                    }
+                } else if (mes == md) {
+                    if (dia > dc) {
+                        dia = dc;
+                        joven = recorrido;
+                    }
+                }
+            }
+
+        }
+        System.out.println("La persona más joven es " + joven.getNombre());
+        System.out.println("---------------------");
+        System.out.println("DATOS:");
+        System.out.println(joven.toString());
+*/

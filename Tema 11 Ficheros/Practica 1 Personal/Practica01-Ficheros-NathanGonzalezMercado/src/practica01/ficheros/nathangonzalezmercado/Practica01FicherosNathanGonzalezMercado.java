@@ -4,13 +4,12 @@
  */
 package practica01.ficheros.nathangonzalezmercado;
 
-import java.util.Scanner;
-import java.util.InputMismatchException;
 import java.io.File;
-import java.util.Iterator;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 /**
  *
@@ -23,15 +22,14 @@ public class Practica01FicherosNathanGonzalezMercado {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-
         //Se crean Scanners, Clases y ficheros necesarios para comenzar el programa
         Auxiliar a = new Auxiliar();
-        Scanner teclado = new Scanner(System.in);
-        File fichero = new File("prueba2.csv");
+        Scanner teclado = new Scanner(System.in, "UTF-8");
+        File fichero = new File("./src/Recursos/personal.csv");
         Personal p = new Personal();
         //Se añade un try-catch por si no se localiza el fichero poder continuar la ejecución del programa
         try {
-            Scanner leeFichero = new Scanner(fichero);
+            Scanner leeFichero = new Scanner(fichero, "UTF-8");
             leeFichero.useDelimiter(",");
             while (leeFichero.hasNext()) {
                 String nombre = leeFichero.next();
@@ -44,6 +42,8 @@ public class Practica01FicherosNathanGonzalezMercado {
                 Persona pf = new Persona(nombre, apellido, email, genero, nacimiento, pais);
                 p.addPersona(pf);
             }
+            leeFichero.close();
+            System.out.println("Fichero " + fichero.getName() + " cargado correctamente");
         } catch (FileNotFoundException ex) {
             System.out.println("No se encuentra ningún fichero en la ruta habitual, se iniciara sin fichero");
         } catch (NoSuchElementException NSEE) {
@@ -65,6 +65,7 @@ public class Practica01FicherosNathanGonzalezMercado {
                         correcto = false;
                         break;
                     case 1: //busqueda por pais
+                        teclado.nextLine();
                         System.out.print("Introduce el pais a buscar: ");
                         String PB = teclado.nextLine();
                         System.out.println("Se buscaran personas del pais: " + PB);
@@ -91,8 +92,10 @@ public class Practica01FicherosNathanGonzalezMercado {
                                 System.out.print("Introduce el día: ");
                                 int dia = teclado.nextInt();
                                 System.out.print("Introduce el mes: ");
-                                String mes = teclado.next();
-                                String fnac = dia + "_" + mes;
+                                String mes = teclado.next().toLowerCase();
+                                System.out.print("Introduce el año:");
+                                int anyo = teclado.nextInt();
+                                String fnac = dia + "_" + mes + "_" + anyo;
                                 System.out.println("Se mostraran todas las personas con la siguiente fecha de nacimiento: " + fnac);
 
                                 //String fnac = teclado.next();
@@ -109,7 +112,7 @@ public class Practica01FicherosNathanGonzalezMercado {
 
                     case 4:
                         System.out.println("Se mostrará la persona más joven");
-                        //no se-
+                        p.personaJoven();
                         correcto = true;
                         System.out.println("");
                         break;
@@ -226,7 +229,9 @@ public class Practica01FicherosNathanGonzalezMercado {
                     int dia = teclado.nextInt();
                     System.out.print("\t\tMes: ");
                     String mes = teclado.next();
-                    fn = dia + "_" + mes;
+                    System.out.print("\t\tAño:");
+                    int anyo = teclado.nextInt();
+                    fn = dia + "_" + mes + "_" + anyo;
                     valid = true;
                 } catch (InputMismatchException noNum) {
                     System.out.println("El dia debe introducirse con número");
@@ -248,5 +253,6 @@ public class Practica01FicherosNathanGonzalezMercado {
         
         guardar.guardarPersonas(nuevasPersonas);
     }
+
 
 }

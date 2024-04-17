@@ -4,13 +4,17 @@
  */
 package practica01.ficheros.nathangonzalezmercado;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 
 /**
  *
@@ -48,14 +52,15 @@ public class Auxiliar {
 
     }
 
-    public void guardarPersonas(ArrayList personas) {
+    public static void guardarPersonas(ArrayList personas) {
         Scanner teclado = new Scanner(System.in);
         FileWriter escritura;
         boolean OK = false;
-        System.out.print("Introduce la ruta del fichero: ");
-        String ruta = teclado.nextLine();
-        System.out.print("Introduce el nombre del fichero: ");
-        String fichero = teclado.next();
+
+        LocalDate creacion = LocalDate.now();
+        LocalTime creacion2 = LocalTime.now();
+        String ruta = "./src/Recursos";
+        String fichero = "personal_" + creacion.getDayOfMonth() + "-" + creacion.getMonthValue() + "-" + creacion.getYear() + "_" + creacion2.getHour() + "-" + creacion2.getMinute() + "-" + creacion2.getSecond() +".txt";
         String localizacion = ruta + "/" + fichero;
         File registrar = new File(localizacion);
         if (registrar.exists()) {
@@ -119,6 +124,31 @@ public class Auxiliar {
                 }
             }
 
+        } else {
+            try {
+            registrar.createNewFile();
+                escritura = new FileWriter(registrar, false);
+                for (Iterator recorre = personas.iterator(); recorre.hasNext();) {
+                    Persona recorrido = (Persona) recorre.next();
+                    escritura.write("" + recorrido.getNombre());
+                    escritura.write(",");
+                    escritura.write("" + recorrido.getApellido());
+                    escritura.write(",");
+                    escritura.write("" + recorrido.getEmail());
+                    escritura.write(",");
+                    escritura.write("" + recorrido.getGenero());
+                    escritura.write(",");
+                    escritura.write("" + recorrido.getNacimiento());
+                    escritura.write(",");
+                    escritura.write("" + recorrido.getPais());
+                    escritura.write(",");
+                    escritura.write("\n");
+                }
+                escritura.close();
+                System.out.println("Fichero escrito correctamente");
+            } catch (IOException ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }
         }
 
     }
